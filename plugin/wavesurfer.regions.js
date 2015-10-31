@@ -12,7 +12,7 @@ WaveSurfer.Regions = {
 
     /* Remove a region. */
     add: function (params) {
-        this.clear();  # change by davebenson to keep a max of one region.
+        this.clear();  // change by davebenson to keep a max of one region.
         var region = Object.create(WaveSurfer.Region);
         region.init(params, this.wavesurfer);
 
