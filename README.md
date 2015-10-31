@@ -1,3 +1,9 @@
+## Dave's fork of wavesurfer
+
+Regions in the waveform at capped at a maximum of one.
+To get do this, I've added one line to the regions plugin.
+
+
 # wavesurfer.js
 
 Interactive navigable audio visualization using [Web Audio](https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html) and Canvas.
