@@ -102,8 +102,22 @@ WaveSurfer.WebAudio = {
         } else {
             this.scriptNode = this.ac.createJavaScriptNode(this.scriptBufferSize);
         }
+        //this.scriptNode.connect(this.ac.destination);  
+        // change by davebenson. was connected directly to destination. 
+        // this created clicks on crossfades. 
+        // running it through a muting gain node first gets rid of the clicks.
+    
+        // Create gain node using the AudioContext
+        if (this.ac.createGain) {
+            var gainNode = this.ac.createGain();
+        } else {
+            var gainNode = this.ac.createGainNode();
+        }
+        gainNode.gain.value = 0
+        // Add the gain node to the graph
+        this.scriptNode.connect(gainNode);
+        gainNode.connect(this.ac.destination)
 
-        this.scriptNode.connect(this.ac.destination);
     },
 
     addOnAudioProcess: function () {
